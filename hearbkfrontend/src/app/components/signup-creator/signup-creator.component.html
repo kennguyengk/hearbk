@@ -1,0 +1,56 @@
+<div class="container-fluid mid-content text-center">
+  <div class="container p-t-50 p-b-50">
+    <div class="content-sec clearfix">
+      <span class="question outside"> Want early access to our exclusive beta?</span>
+      <div class="form-sec">
+        <div class="form-group">
+          <input [(ngModel)]="firstName" placeholder="First Name*" name="first" type="text" required="required">
+          <input [(ngModel)]="lastName" placeholder="Last Name*" name="last" type="text" required="required">
+          <input [(ngModel)]="twitter" placeholder="Twitter @" type="text" name="twt" required="required">
+          <input [(ngModel)]="instagram" placeholder="Instagram @" type="text" name="insta" required="required">
+        </div>
+        <div class="bottom-control">
+          <div *ngIf="invalidNames" class="alert alert-danger">
+            <strong>First and Last Name is required.</strong>
+            <br>
+          </div>
+          <div *ngIf="invalidFirstname" class="alert alert-danger">
+            <strong>First Name is not valid.</strong>
+            <br>
+          </div>
+          <div *ngIf="invalidLastname" class="alert alert-danger">
+            <strong>Last Name is not valid.</strong>
+            <br>
+          </div>
+          <button class="btn next full-width" mdbBtn type="button" gradient="aqua" (click)="signup()" size="lg"
+            mdbWavesEffect>Submit</button>
+          <br>
+          <br>
+          <div *ngIf="msgShow" class="alert alert-success">
+            <strong>Success!</strong> {{message}}
+          </div>
+          <div *ngIf="exsistShow" class="alert alert-success">
+              {{exsistMsg}}
+            </div>
+        </div>
+      </div>
+      <a id="linkStripe" style="display: none" href="/">HearBK Founder&#39;s
+        Club</a>
+    </div>
+  </div>
+</div>
+
+<div [config]="{ show: false, backdrop: 'static' }" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-auto-name">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-body thx text-center">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <img src="/assets/cross.png" />
+        </button>
+        <img class="tickimg" src="/assets/b-tick.png" />
+        <p>Thanks we'll be in touch!</p>
+      </div>
+    </div>
+  </div>
+</div>

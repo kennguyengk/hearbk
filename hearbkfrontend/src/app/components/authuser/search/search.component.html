@@ -1,0 +1,168 @@
+<div class="container2">
+  <div class="profileConatiner text-center ">
+    <label class=" font24 removeLabelMargin ">Search</label>
+    <div class="row ">
+
+      <div class="col-lg-12 col-md-12 col-sm-12 whiteBg hrMargin mTop">
+
+        <div class="row  borderBotom vCenter">
+          <div class="col-xs-9 col-md-7 col-lg-7 col-sm-9 hrMargin ">
+            <div class="input-group">
+              <tags-input (scrollableOptions)="false" class="form-control2 input-lg" (onTagsChanged)="onTagsChanged($event)"></tags-input>
+              <div class="input-group-btn ">
+                <label for="Hiddensubmitform" class="btn btn-primary searchIcon">
+                  <span class="glyphicon glyphicon-search"></span>
+                </label>
+                <!-- <button for="Hiddensubmitform" class="btn btn-primary searchIcon"> -->
+                <!-- <span class="glyphicon glyphicon-search"></span> -->
+                <!-- </button> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-2 col-xs-3 no-padding  text-left ">
+            <a class="baseColor linkBtn " (click)="displayFilter(true)">ADVANCED</a>
+          </div>
+        </div>
+
+
+        <!-- <tags-input class="form-control input-lg" (onTagsChanged)="onTagsChanged($event)" [removeLastOnBackspace]="removeLastOnBackspace" ></tags-input> -->
+
+
+
+
+        <div class="row listPadding text-left borderBotom" *ngIf="isAdvanced">
+          <form [formGroup]="filterform" (ngSubmit)="filterdata(filterform.value)">
+            <div class="col-lg-2 col-md-2 text-left">
+              <label class="font14 ">Gender</label>
+              <div class="text-left">
+                <input type="radio" id="male" formControlName="gender" value="male">
+                <label class="text-muted" for="male">Male</label>
+              </div>
+              <input type="radio" id="female" formControlName="gender" value="female" checked>
+              <label class="text-muted" for="female"> Female</label>
+            </div>
+            <div class="col-lg-2 col-md-3 text-left">
+              <label class="font14 pTop10">Age</label>
+              <div class="text-left ">
+                <input type="radio" id="Any" formControlName="age" value="0">
+                <label class="text-muted" for="Any">Any age (195, 609)</label>
+
+                <input type="radio" id="below20" formControlName="age" value="20" checked>
+                <label class="text-muted" for="below20">20 and below (65, 605)</label>
+
+                <input type="radio" id="20" formControlName="age" value="30">
+                <label class="text-muted" for="20">20 - $30 (89, 876)&nbsp;&nbsp;</label>
+
+                <input type="radio" id="30" formControlName="age" value="40">
+                <label class="text-muted" for="30">$30 - $40 (27,332)</label>
+
+                <input type="radio" id="40" formControlName="age" value="50">
+                <label class="text-muted" for="40">$40 - $50 (27,332)&nbsp;</label>
+
+                <input type="radio" id="50" formControlName="age" value="51">
+                <label class="text-muted" for="50">$50 & above (12,796)</label>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 text-left" id="signup-form">
+              <div>
+                <label class="top10 font14 pTop10">Country</label>
+                <select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='optionSelected' (ngModelChange)='onCountrySelected($event)'>
+                  <option value="" selected disabled>Choose country</option>
+                  <option data-tokens="India" value={{item.id}} *ngFor="let item of countries">{{item.name}}</option>
+                </select>
+
+                <label class="top10 font14 pTop10">State</label>
+                <select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='stateSelected' (ngModelChange)='onStateSelected($event)'>
+                  <option value="" selected disabled>Choose state</option>
+                  <option data-tokens="India" value="{{item.id}}" *ngFor="let item of states">{{item.name}}</option>
+                </select>
+
+                <label class="top10 font14 pTop10">City</label>
+                <select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='citySelected' (ngModelChange)='onCitySelected($event)'>
+                  <option value="" selected disabled>Choose city</option>
+                  <option data-tokens="India" value="{{item.name}}" *ngFor="let item of cities">{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 text-left" id="signup-form">
+              <div>
+                <label class="top10 font14 pTop10">Lists</label>
+                <select class="selectpicker" disabled="true" title="this is disabled" [ngModelOptions]="{standalone: true}" [(ngModel)]='listSelected'
+                  (ngModelChange)='onListSelected($event)'>
+                  <option value="" selected disabled>Disabled</option>
+                  <option data-tokens="India" *ngFor="let item of listCategory">{{item}}</option>
+                </select>
+
+                <label class="top10 font14 pTop10">Genre</label>
+                <select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='genreSelected' (ngModelChange)='onGenreSelected($event)'>
+                  <option value="" selected disabled>Choose any genre</option>
+                  <option data-tokens="India" *ngFor="let item of selection">{{item}}</option>
+                </select>
+
+                <!-- <label class="top10 font14 pTop10">Favorite Artist</label>
+             		<input type="text" formControlName="favArtist"  placeholder="your favorite artist" > -->
+                <label class="top10 font14 pTop10">Favorite Artist</label>
+                <select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='FavArtistSelected' (ngModelChange)='onArtistSelected($event)'>
+                  <option value="" selected disabled>Choose any artist</option>
+                  <option data-tokens="India" *ngFor="let item of favArtistList">{{item.item_text}}</option>
+                </select>
+              </div>
+            </div>
+            <input type="submit" id="Hiddensubmitform" class="hidden" />
+          </form>
+
+          <div style="margin-left:15px">
+            <input type="submit" class="btn whiteClr topMargin shadow linkBtn" (click)="displayFilter(false)" value="CLOSE FILTERS">
+          </div>
+        </div>
+
+
+
+
+
+        <!--     <div class="row listPadding borderBotom" *ngFor="let item of usersList | UserfilterPipe: searchterm :displayFilter: gender : age : country: state: city : list: genre : favartist: searchbutton "> -->
+        <div *ngIf="noresults">
+          <span>No results found</span>
+        </div>
+        <div class="row listPadding borderBotom" *ngFor="let item of usersList ">
+          <div class="col-lg-1 col-md-2 ">
+            <img src="{{item.User.Userdetail.image_path}}" class="img-circle userImage" />
+          </div>
+          <div class="col-lg-9 col-md-8 text-left">
+            <div>
+              <label class="font14">{{item.User.Userdetail.fullname}}</label>
+            </div>
+            <div>
+              <label>{{item.work}}</label>
+            </div>
+            <div>
+              <label class="text-muted ">{{item.User.Userdetail.bio}}</label>
+            </div>
+
+            <div class="row text-left">&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btnOutline success ">
+                <label>ENGINEERS</label>
+              </button>
+              <button type="button" class="btnOutline success ">
+                <label>PRODUCERS</label>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="col-lg-2 col-md-2 text-right">
+            <input *ngIf="add" type="submit" class="btn whiteClr topMargin shadow" value="ADD">
+            <button *ngIf="item.status === '1'" type="button" class=" checkBtn">
+              <span class="glyphicon glyphicon-ok baseColor "></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hrMargin"></div>
+      </div>
+    </div>
+
+  </div>
+</div>

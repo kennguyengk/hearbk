@@ -1,0 +1,81 @@
+.drop-zone {
+    border: 2px dashed #D3EEDF;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    height: 170px;
+    background: #d3eedf0a;
+}
+
+input.drop-file {
+    left: 0;
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+}
+
+.drop-zone h5 {
+    margin-top: 27px;
+    font-family: poppins;
+    font-size: 15px;
+    color: #a7a7a7;
+    line-height: 21px;
+}
+
+.drop-zone span {
+    display: block;
+    line-height: 30px;
+}
+
+button.drop-btn {
+    -webkit-box-shadow: 0 0 3px #ddd;
+    box-shadow: 2px 1px 3px #ddd;
+    background: #fff;
+    border: none;
+    padding: 9px 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #a9a6a6;
+    margin-top: 11px;
+    border-radius: 5px;
+}
+
+input.drop-file {
+    opacity: 0;
+}
+
+label.chip {
+    display: block;
+    line-height: 29px;
+    font-weight: normal;
+}
+
+label.chip input {
+    display: none;
+  }
+  
+  label.chip input + span {
+    background: transparent;
+    color: #333;
+    border-radius: 6px;
+    font-weight: 500;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    border: 2px solid #D3EEDF;
+}
+  
+  label.chip input:checked + span {
+    background: #3cb77e url(/assets/tick.png) no-repeat center center / 12px;
+    color: #fff;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #3cb77e;
+  }
+ 

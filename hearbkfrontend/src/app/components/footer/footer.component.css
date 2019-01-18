@@ -1,0 +1,30 @@
+
+/* dashboard footer */
+.padding3{padding:3%;border-bottom:1px solid lightgrey;}
+.p1{padding:1%;}
+
+.footer-links {
+    display: flex;
+}
+.soci-item {
+    margin: 0 5px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+   .imgwdt{width:115%!important;}
+   .iconwdt{width: 17px;}
+   .pLeft{padding-left: 9px!important;}
+}
+@media (min-width: 320px) and (max-width: 767px) {
+   .nopadding {
+	   padding-left: 0px !important;
+	   padding-right: 0px !important;
+	   margin: 0px !important;
+	}
+   .mtop{margin-top: 20px}
+   
+   .footer-links {
+    justify-content: center;
+
+}
+}

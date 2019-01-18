@@ -1,0 +1,49 @@
+.thx p{
+    font-size: 31px;
+    text-align: center;
+    padding-bottom: 31px;
+    font-weight: 600;
+    font-family: poppins;
+}
+.tickimg{
+    padding-top: 28px;
+    padding-bottom: 22px;
+}
+
+.modal-content{
+    border-radius: 0px !important;
+}
+.close{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: 1;
+    position: absolute;
+    right: 14px;
+} 
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: 1;
+}
+
+.modal.fade .modal-dialog {
+    -webkit-transition: -webkit-transform .3s ease-out;
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+    -webkit-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    top: 47%;
+}
+
+
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,-50%);
+    top: 50%;
+    margin-top: 0;
+}

@@ -1,0 +1,86 @@
+
+<div class="container example5">
+  <nav class="navbar navbar-default row">
+ 
+      <div class="navbar-header col-lg-3 col-md-3 col-sm-3 col-xs-7">
+        <a class="navbar-brand" style="border-bottom: none;"><img class="imgstyle cursor" src="/assets/Logo.png" routerLink="users/dashboard" >
+        </a>
+      </div>
+ 
+      <div id="navbar5" class=" text-center col-lg-6 col-md-6 col-sm-6 hidden-xs">
+        <div class="divHeight v2Center">          
+           <label class="inlineContent text">Lists  </label><label routerLink={{navigate_as}} class="inlineContent cursor">&nbsp;&nbsp;&nbsp;  Join as a {{joinas}}</label>
+        </div>
+      </div>
+
+      <div id="navbar5" class=" col-lg-3 col-md-3 col-sm-3 col-xs-5 text-right pleft">
+        <div class="nav vCenter  mRight marginTop2 xsmenu">
+			<span *ngIf="loggedin == false " class="glyphicon glyphicon-search text-muted font24 cursor forSearch" routerLink="users/search" ></span>
+			<span *ngIf="loggedin == true " class="glyphicon glyphicon-search text-muted font24 cursor forSearch2" routerLink="users/search" ></span>
+            <div *ngIf="loggedin == true " >
+                  <span style="margin-top: 11px" class="glyphicon glyphicon-bell text-muted font24 cursor"><span class="badge badge-light font12">9</span></span>
+                  <img src="/assets/default.png" class="profileImg  hidden-xs" [popover]="myPopover">
+                  <popover-content #myPopover 
+                        placement="bottom"
+                        [animation]="true" 
+                        [closeOnClickOutside]="true" >
+                      <ul class="list-group ">
+                        <li class="list-group-item bBottom" routerLink="users/profile" >Edit Profile</li>
+                        <li class="list-group-item" routerLink="user/login" (click)="logout(
+                        )" >LogOut</li>
+                      </ul>          
+                  </popover-content>
+                   <div class="btn-group hidden-lg hidden-md hidden-sm mright">
+			            <button type="button" data-toggle="dropdown" class="btn dropdown-toggle"><span class="glyphicon glyphicon-option-vertical"></span></button>
+			            <ul class="dropdown-menu">
+			                <li class="list-group-item bBottom" routerLink="users/profile" >Edit Profile</li>
+			                <li class="list-group-item bBottom">Lists</li>
+			                <li class="list-group-item bBottom" routerLink={{navigate_as}} >Join as a {{joinas}}</li>
+			                <li class="list-group-item" (click)="logout(
+                        )" routerLink="user/login">LogOut</li>
+			            </ul>
+        </div>
+            </div>
+	 		<div class="hidden-xs">
+	            <div *ngIf="usertype == 'contributor'">	
+	              <label *ngIf="loggedin == false "  type="submit" class="btn btn-lg topMargin shadow marginTop font14 login-btn" style="background: linear-gradient(to right, #3db681 , #28b0d6)">
+	                  <span routerLink="/login">Log In</span>
+	                  <span [routerLink]="['/signup', 'contributor']">/ Sign up</span>
+	              </label>
+	            </div>
+
+	            <div *ngIf="usertype == 'listener'" >
+	               <label *ngIf="loggedin == false"  type="submit" class="btn btn-lg topMargin shadow marginTop font14" style="background: linear-gradient(to right, #3db681 , #28b0d6)">
+	                  <span routerLink="/login">Log In</span>
+	                  <span [routerLink]="['/signup', 'listener']">/ Sign up</span>
+	              </label>
+	            </div>
+	        </div>
+	        <div *ngIf="loggedin == false " >
+	           <div *ngIf="usertype == 'contributor'" class="btn-group hidden-lg hidden-md hidden-sm mright">
+			            <button type="button" data-toggle="dropdown" class="btn dropdown-toggle"><span class="glyphicon glyphicon-option-vertical"></span></button>
+			            <ul class="dropdown-menu">
+			                <li class="list-group-item bBottom" routerLink="/login" >Login</li>
+			                <li class="list-group-item bBottom" [routerLink]="['/signup', 'contributor']">Sign Up</li>
+			                <li class="list-group-item bBottom" routerLink={{navigate_as}} >Join as a {{joinas}}</li>
+			            </ul>
+                </div> 
+
+                 <div *ngIf="usertype == 'listener'" class="btn-group hidden-lg hidden-md hidden-sm mright">
+			            <button type="button" data-toggle="dropdown" class="btn dropdown-toggle"><span class="glyphicon glyphicon-option-vertical"></span></button>
+			            <ul class="dropdown-menu">
+			                <li class="list-group-item bBottom" routerLink="/login" >Login</li>
+			                <li class="list-group-item bBottom" [routerLink]="['/signup', 'listener']">Sign Up</li>
+			                <li class="list-group-item bBottom" routerLink={{navigate_as}} >Join as a {{joinas}}</li>
+			            </ul>
+                </div>
+            </div>
+      </div>
+ 	</div>
+
+  </nav>
+
+</div>
+
+
+

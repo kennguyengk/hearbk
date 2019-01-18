@@ -1,0 +1,119 @@
+   
+<div class="panel-heading bg1 text-center secP" >
+    <h4 class="whiteClr noMargin">What’s better than listening to new music?</h4>
+    <h1 class="whiteClr removeMTop">Getting paid for it.</h1>
+    <h5 class="whiteClr"><em>We provide the perfect listeners for your new single,</em></h5>
+    <h5 class="whiteClr"><em>instrumentals, remixes and cover songs</em></h5>
+    <div class="row text-center">
+        <div class="toggleBtn">
+            <span class="glyphicon glyphicon-menu-down text  "></span>
+        </div>
+    </div>
+
+    <div class="transparent-border col-md-offset-3 col-md-6 col-sm-7 col-sm-offset-2 input-group">
+        <input type="email" class="email form-control"  name= "email" placeholder="Claim your HEARBK.com profile now">
+        <span class="input-group-btn get-access">
+            <input type="submit"  title="Enter valid Email" class="email btn btn-info" value="CLAIM">
+        </span>
+  </div>
+</div>
+
+
+
+<div class="panel-heading text-center bg4 bg" >
+    <div class="row text-center">
+        <div class="toggleBtn">
+            <span class="glyphicon glyphicon-menu-down text "></span>
+        </div>
+    </div>
+  
+  <div class="row vCenter ">
+       <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
+        <div class="row ">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12 col-xs-12 col-md-10 col-md-offset-1 ">
+                 <h4 class="text-left lineHeight black" ><strong class="fontblack">After you set up your <label class="text font18">HEARBK.com </label> profile,
+                        you can earn money by completing surveys
+                        for artists, producers, songwriters
+                        and musicians.</strong>
+                </h4>
+                <p class="text-left lineHeight">And since you’re obviously already such an
+                        awesome person for supporting artists,
+                        you can donate the money to charity.
+                        Whatever you think is best!
+                </p>
+             </div>     
+       </div>
+       </div>
+       <div class="col-lg-5 col-md-5 col-sm-6 hidden-xs"><img src="/assets/listener.png" style="width:80%"></div>
+  </div>
+
+</div>
+
+ 
+
+<div class="panel-heading text-center secP" >
+    <h2 class="text inlineContent" >Music </h2><h2 class ="inlineContent blackclr" >Listener</h2>
+    <div class="toggleBtn"><span class="glyphicon glyphicon-menu-down text" ></span></div>
+    <div class="row seven-cols mTop  text-center gridContainer">
+        <div class="col-md-1 hidden-sm  col-lg-1 hidden-xs " *ngFor="let item of mListenerList">
+            <div class="gridIcons" [ngClass]="{'selected': item.title === 'BLOGGERS'}" ><img src="{{item.icon}}" /></div>
+            <label class="marginTop" [ngClass]="{'text': item.title === 'BLOGGERS'}">{{item.title}}</label> 
+        </div>
+        <div class="col-xs-1 hidden-md hidden-lg hidden-sm" *ngFor="let item of mListenerList">
+            <div class="gridIcons"><img src="{{item.icon}}" /></div>
+            <label class="marginTop">{{item.title}}</label> 
+        </div>
+        <div class="col-sm-1 hidden-xs hidden-md hidden-lg " *ngFor="let item of mListenerList">
+            <div class="gridIcons"><img src="{{item.icon}}" /></div>
+            <label class="marginTop">{{item.title}}</label> 
+        </div>
+    </div>    
+</div>
+
+<div class="panel-heading bg2 text-center secP" >
+    <h3 class="whiteClr">MUSIC LISTENERS FROM ALL OVER COME TO HEARBK.COM</h3>
+    <h3 class="whiteClr">TO DISCOVER NEW MUSIC FROM PEOPLE LIKE YOU </h3>
+    <div class="toggleBtn"><span class="glyphicon glyphicon-menu-down text" ></span></div>
+</div>       
+
+<div class="panel-heading text-center secP" >
+    <h2 class=" inlineContent blackclr" >How </h2>
+    <h2 class =" inlineContent text" >Hearbk </h2>
+    <h2 class=" inlineContent blackclr" >Works</h2>
+    <div class="toggleBtn"><span class="glyphicon glyphicon-menu-down text" ></span>
+    </div>
+    <div class="row text-center t1">
+        <div class="col col-lg-6 col-md-7 text-center relative vCenter hidden-sm hidden-xs">
+            <img src="/assets/Group1.png" style="width: 84%;"  class="sectionPadding"/>
+            <img src="/assets/Group1.png" class="overlayImg sectionPadding"/>
+        </div>
+        <div class ="col col-lg-6 col-md-5 col-sm-12 col-xs-12 text-center " >
+            <div class="row relative" *ngFor="let item of workList">
+                <div class="col-lg-3 col-md-4 col-sm-2 col-xs-2">
+                    <div class="gridIcons2">
+                        <img src="{{item.icon}}"  class="iconWidth"/>  
+                    </div>
+                    <span class="badge">{{item.bdgC}}</span>
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-10 col-xs-10 text-left">
+                    <label class="marginTop">{{item.desc}}</label>
+                </div>
+            </div>
+        </div>              
+    </div>  
+</div>
+
+<div class="panel-heading bg3 text-center secP" >
+    <h3 class="whiteClr">Create your free account today. Happy listening.</h3>
+    <input type="submit" class="btn btn2 btn-lg topMargin  marginTop  whiteClr" value="CREATE ACCOUNT" >
+</div>
+
+<!-- <div class="panel-heading bg3 text-center secP" >
+    <h3 class="whiteClr">START SHARING YOUR MUSIC WITH A HEARBK.COM PROFILE!</h3>
+    <div  class="transparent-border col-md-offset-3 col-md-6 col-sm-7 col-sm-offset-2 input-group">
+        <input type="email" class="email form-control"   placeholder="HEARBK.com/yourname"   >
+        <span class="input-group-btn get-access">
+            <input type="submit" [disabled] = "true"  class="email btn btn-info" value="CLAIM">
+        </span>
+    </div>
+</div> -->

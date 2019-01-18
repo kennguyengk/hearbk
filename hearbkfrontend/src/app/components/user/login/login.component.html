@@ -1,0 +1,24 @@
+<div class="gradient ">
+    <div class="signup-form col-md-offset-4 col-sm-8 col-sm-offset-2 col-md-4">
+        <h2>Login</h2>
+        <hr>
+        <div id="signup-form" class="col-md-10 col-sm-10 col-sm-offset-1 col-md-offset-1">
+        	<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+		        <button type="button" (click)="socialSignIn('facebook')" class="btn btn-lg topMargin"><span *ngIf="!fbloader">Login with facebook</span><span *ngIf= "fbloader"><img src="assets/loader.gif" class="loader_img"/></span></button>
+		        <p><span>Or</span></p>
+		        <input type="email" formControlName="username" placeholder="Email address" class="topMargin">
+		        <input type="password" formControlName="password" placeholder="password">            
+		        <div class="row">
+					<div class="col-sm-1 col-xs-1 col-lg-1 col-md-1 text-left"><input type="checkbox" formControlName="rememberme" class=" move-left"></div>
+		            <div class="col-sm-6 col-xs-6 col-lg-5 col-md-6 text-left "><span class="form-check-label" >Remember me</span></div>
+		            <div routerLink="/forgetpassword" class="col-sm-5 col-xs-5 col-lg-6 col-md-5 text-right paddingLeft cursor">Forgot password?</div>
+		        </div>
+		        <input type="submit" class="btn btn-lg topMargin shadow" value={{loginvalue}}>
+		    </form>         
+			<div style="text-align:center;margin-bottom: -16px;">
+            	<a routerLink="/signup/contributor" class="createaccntstyle" >Create an account</a>
+          	</div>​ 
+        </div>
+    </div>
+</div>
+

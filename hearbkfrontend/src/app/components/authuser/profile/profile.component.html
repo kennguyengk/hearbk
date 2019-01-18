@@ -1,0 +1,394 @@
+<div class="container2">
+  <div class="profileConatiner">
+
+
+    <!-- <div id="mySidenav" class="sidenav ">
+      <a href="javascript:void(0)" class="closebtn " (click)="closeNav()">&times;</a>
+      <a [class.current]="id == 's1'" (click)="scrollTo('#s1', '#v-scrollable')closeNav()">Profile Section</a>
+      <a [class.current]="id == 's2'" (click)="scrollTo('#s2', '#v-scrollable');closeNav()">Preference Section</a>
+      <a [class.current]="id == 's3'" (click)="scrollTo('#s3', '#v-scrollable');closeNav()">Lists</a>
+      <a [class.current]="id == 's4'" (click)="scrollTo('#s4', '#v-scrollable');closeNav()">Financial</a>
+      <a [class.current]="id == 's5'" (click)="scrollTo('#s5', '#v-scrollable');closeNav()">Linked Accounts</a>
+      <a [class.current]="id == 's6'" (click)="scrollTo('#s6', '#v-scrollable');closeNav()">Notifications</a>
+    </div> -->
+
+    <div id="main" class="hidden-lg hidden-md  bgGradientMenu row">
+      <div class="col col-xs-2 col-sm-2">
+        <span style="font-size:30px;cursor:pointer" class="whiteClr" (click)="openNav()">&#9776;</span>
+      </div>
+
+      <div class="col-xs-7 col-xs-offset-3 col-sm-7 col-sm-offset-3 text-right profileIcon">
+        <a routerLink="/previewprofile">
+          <span class="glyphicon glyphicon-user whiteClr "></span>
+        </a>
+      </div>
+
+    </div>
+
+
+
+    <div class="row">
+      <!-- <div class="col-sm-12 col-lg-4 col-md-4  hidden-xs hidden-sm">
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" id="focusmeplease" [class.current]="id == 's1'" (click)="scrollTo('#s1', '#v-scrollable',false)">
+            <label>Profile Section</label>
+          </a>
+          <a class="list-group-item list-group-item-action " [class.current]="id == 's2'" (click)="scrollTo('#s2', '#v-scrollable',false)">
+            <label>Preference Section</label>
+          </a>
+		<a class="list-group-item list-group-item-action" [class.current]="id == 's4'" (click)="scrollTo('#s4', '#v-scrollable',false)">
+            <label>Financial</label>
+          </a>
+          <a class="list-group-item list-group-item-action " [class.current]="id == 's5'" (click)="scrollTo('#s5', '#v-scrollable',false)">
+            <label>Linked Accounts</label>
+          </a>
+          <a class="list-group-item list-group-item-action " [class.current]="id == 's6'" (click)="scrollTo('#s6', '#v-scrollable',false)">
+            <label>Notifications</label>
+          </a>
+        </div> 
+        <label routerLink="/previewprofile" class="btn btn2 btn-block topMargin shadow">PREVIEW PROFILE</label>
+        <label for="submit-form" class="btn btn2 btn-block topMargin shadow" >PREVIEW PROFILE</label> 
+        <input type="submit" for="submit-form" class="btn btn2 btn-block topMargin shadow" value="PREVIEW PROFILE" >
+      </div> -->
+
+      <div class="col-lg-8 col-sm-12 col-md-8">
+        <form [formGroup]="profileform" (ngSubmit)="previewprofile(profileform.value)">
+          <div id="v-scrollable" class="scrollable section" ng2-scrollable (elementVisible)="id = $event.id">
+            <div class="whiteBg detailView" id="s1">
+              <span class="size18">Profile Section</span>
+
+              <div class="top10 row vCenter">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <img src={{profiledata?.image_path}} class="image" />
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8 ">
+                  <div class="row ">
+                    <label id="#bb" class="label col-lg-3 col-sm-3 col-md-3"> Choose File
+                      <input type="file" id="File" size="60" (change)="onFileChanged($event)">
+                    </label>
+                    <div *ngIf="!loader">
+                      <span *ngIf="!imageselected" class="col-sm-9 col-lg-9 col-md-9 text-muted">no file chosen</span>
+                    </div>
+                    <div *ngIf="loader">
+                      <img src="assets/loader.gif" class="loader_img" />
+                    </div>
+                    <span *ngIf="imageselected" class="col-sm-9 col-lg-9 col-md-9 text-muted">{{imageobject?.imagename}}</span>
+                  </div>
+                  <div class="row">
+                    <!-- <img src="assets/loading.gif"/> -->
+                    <input type="submit" class="btn btn-sm  btn-lg btn-md topMargin shadow whiteClr btnProile" value="Upload" (click)="uploadprofile()">
+                  </div>
+                </div>
+              </div>
+
+              <div class="top10"></div>
+              <hr/>
+              <!-- <div id="signup-form">
+                <label class="top10">Legal Name</label>
+                <input type="text" formControlName="fullname" (blur)=e editprofile(profileform.value);>
+
+                <label class="top10">Professional Name</label>
+                <input type="text" formControlName="professional_name" (blur)=e editprofile(profileform.value);>
+
+                <label class="top10">Title</label>
+                <input type="text" formControlName="title" (blur)=e editprofile(profileform.value);>
+
+                <label class="top10">Company</label>
+                <input type="text" formControlName="company" (blur)=e editprofile(profileform.value);>
+
+                <label class="top10">Bio</label>
+                <textarea class="span6" rows="3" formControlName="bio" (blur)=e editprofile(profileform.value);></textarea>
+
+
+                <label class="top10">Website</label>
+                <input type="text" formControlName="website" (blur)=e editprofile(profileform.value);>
+
+                <div>
+                  <label class="top10">User Name</label>
+                </div>
+                <div>
+                  <label class="top10">{{profileform.value.professional_name}}</label>
+                </div>
+              </div> -->
+              <!-- <input type="submit" id="submit-form" class="hidden" /> -->
+              <!-- <input type="submit" class="btn btn-lg topMargin shadow" value="submit" > -->
+              <!-- </form> -->
+              <!-- <label for="submit-form" tabindex="0">Submit</label> -->
+            </div>
+
+
+
+            <!-- Preference section -->
+            <div class="whiteBg detailView topMargin" id="s2">
+              <span class="size18">Preferences Section</span>
+              <div id="signup-form">
+                <div>
+                  <label class="top10">Gender</label>
+                </div>
+                <div class="top10">
+                  <input type="radio" id="male" value="male" formControlName="gender" (change)="editprofile(profileform.value)">
+                  <label for="male">Male </label>
+
+                  <input type="radio" id="female" value="female" formControlName="gender" (change)="editprofile(profileform.value)">
+                  <label for="female" style="margin-left: 13px;"> Female</label>
+                </div>
+
+
+
+                <div class="top10"></div>
+
+                <label class="top10">Date of Birth</label>
+                <input type="date" formControlName="dob" class="form-control dateField no-spin" id="exampleInputDOB1" placeholder="Date of Birth"
+                  (change)="editprofile(profileform.value)">
+                <!-- <input type="text" placeholder="password" > -->
+
+
+
+
+
+                <label class="top10 font14 pTop10">Country</label>
+                <select class="" formControlName='country' (change)="editprofile(profileform.value);onCountrySelected(profileform.value.country);">
+                  <option value="" selected disabled>Choose your country</option>
+                  <option value={{item.name}} *ngFor="let item of countries">{{item.name}}</option>
+                </select>
+
+                <label class="top10 font14 pTop10">State</label>
+                <select class="" formControlName='state' (change)="editprofile(profileform.value);onStateSelected(profileform.value.state);">
+                  <option value="" selected disabled>Choose your state</option>
+
+                  <option value={{item.name}} *ngFor="let item of states">{{item.name}}</option>
+                </select>
+
+                <label class="top10 font14 pTop10">City</label>
+                <select class="" formControlName='city' (change)="editprofile(profileform.value);">
+                  <option value="" selected disabled>Choose your city</option>
+
+                  <option value={{item.name}} *ngFor="let item of cities">{{item.name}}</option>
+                </select>
+
+                <!-- <label class="top10 font14 pTop10">State</label>
+		               		<select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='stateSelected' (ngModelChange)='onStateSelected($event)' >
+		                  		<option data-tokens="India" value="{{item.id}}" *ngFor="let item of states">{{item.name}}</option>
+		               		</select>
+
+            				<label class="top10 font14 pTop10">City</label>
+	               			<select class="selectpicker" [ngModelOptions]="{standalone: true}" [(ngModel)]='citySelected' (ngModelChange)='onCitySelected($event)' >
+	                  			<option data-tokens="India" value="{{item.name}}" *ngFor="let item of cities">{{item.name}}</option>
+	               			</select> -->
+
+
+
+
+
+
+
+                <div class="top10">
+                  <label class="top10">Favorite Artists</label>
+                  <ng-multiselect-dropdown [placeholder]="' Select your Favorite Artists'" [data]="artist" [(ngModel)]="selectedartist" [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)"
+                    (onDeSelectAll)="onDeSelectAll($event)" [ngModelOptions]="{standalone: true}"></ng-multiselect-dropdown>
+                </div>
+
+
+                <div class="top10">
+                  <label class="top10"> Favorite Genres</label>
+                  <ng-multiselect-dropdown [placeholder]="'Select your Favorite Genres'" [data]="genres" [(ngModel)]="selectedgenres" [settings]="dropdownSettings"
+                    (onSelect)="ongenreSelect($event)" (onDeSelect)="OngenreDeSelect($event)" (onSelectAll)="ongenreSelectAll($event)"
+                    (onDeSelectAll)="ongenreDeSelectAll($event)" [ngModelOptions]="{standalone: true}"></ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- Lists section -->
+            <div class="whiteBg detailView topMargin" id="s3">
+              <span class="size18">Lists</span>
+              <div id="signup-form">
+                <div class="row topMargin borderBotom">
+                  <div class="col-lg-1 col-sm-1 col-md-2 col-xs-2 topMargin">
+                    <span class="fa fa-snapchat-ghost"></span>
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5 topMargin">
+                    <div>
+                      <label class="topMargin">Block Girls Code</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-sm-5 col-md-4 col-xs-5 topMargin">
+                    <ul class="list-inline text-center">
+                      <li class="listInlineItem" *ngFor="let mg of userListGroup">
+                        <img src="{{mg}}" class="img-circle groupImage" />
+                      </li>
+                      <li class="listInlineItem">
+                        <div class="groupImage img-circle p5">+3k
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5 ">
+                    <input type="submit" class="btn btn2 btn-xs topMargin shadow" value="LEAVE">
+                  </div>
+                </div>
+                <div class="c1 ">
+                  <div class="row topMargin borderBotom">
+                    <div class="col-lg-1 col-sm-1 col-md-2 col-xs-2 topMargin">
+                      <span class="fa fa-snapchat-ghost"></span>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5 topMargin">
+                      <div>
+                        <label class="topMargin">Block Girls Code</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-sm-5 col-md-4 col-xs-5 topMargin">
+                      <ul class="list-inline text-center">
+                        <li class="listInlineItem" *ngFor="let mg of userListGroup">
+                          <img src="{{mg}}" class="img-circle groupImage" />
+                        </li>
+                        <li class="listInlineItem">
+                          <div class="groupImage img-circle p5">+3k
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5 ">
+                      <input type="submit" class="btn btn2 btn-xs topMargin shadow" value="LEAVE">
+                    </div>
+                  </div>
+                  <div class="overlay vCenter">
+                    <span class=" row fullWidth text-center">PENDING APPROVAL</span>
+                  </div>
+                </div>
+
+                <div class="text-center topMargin">
+                  <label class="topMargin greenColor">VIEW ALL AVAILABLE LISTS</label>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Financial section -->
+            <div class="whiteBg detailView topMargin" id="s4">
+              <span class="size18">Financial</span>
+              <div id="signup-form">
+                <div class="row topMargin borderBotom">
+                  <div class="col-lg-1 col-sm-1 col-md-2 col-xs-2 topMargin">
+                    <span class="fa fa-snapchat-ghost"></span>
+                  </div>
+                  <div class="col-lg-8 col-sm-8 col-md-7 col-xs-7 topMargin">
+                    <div>
+                      <label class="rmMarginBottom">Raifeisen Bank</label>
+                    </div>
+                    <div>
+                      <span class="greenColor">MORE INFO</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-xs-3 ">
+                    <input type="submit" class="btn btn2 btn-xs topMargin shadow" value="LINK">
+                  </div>
+                </div>
+
+                <div class="row topMargin borderBotom">
+                  <div class="col-lg-9 col-sm-9 col-xs-9 topMargin">
+                    <div>
+                      <label class="rmMarginBottom">Credit card</label>
+                    </div>
+                    <div>
+                      <span>No card linked</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-xs-3">
+                    <input type="submit" class="btn btn2 btn-xs topMargin shadow" value="ADD">
+                  </div>
+                </div>
+
+                <div class="row topMargin borderBotom">
+                  <div class="col-lg-9 col-sm-9 col-xs-7 topMargin">
+                    <div>
+                      <label class="topMargin">Cash out history</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-xs-5">
+                    <input type="submit" class="btn btn2 btn-xs topMargin shadow" value="DOWNLOAD">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Linked Accounts section -->
+            <div class="whiteBg detailView topMargin" id="s5">
+              <span class="size18">Linked Accounts</span>
+              <div id="signup-form">
+                <div class="row topMargin borderBotom" *ngFor="let item of linkedAccounts">
+                  <div class="col-lg-1 col-sm-1 col-md-2 col-xs-2 topMargin">
+                    <img src={{item.icon}} class="" />
+                  </div>
+                  <div class="col-lg-8 col-sm-8 col-md-7 col-xs-7 topMargin">
+                    <label class="topMargin font9">{{item.title}}</label>
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3" *ngIf="item.status===0">
+                    <input type="button" (click)="openlinkedAcount(item.title,item.key)" class="btn btn2 btn-xs topMargin shadow" data-toggle="modal"
+                      data-target="#myModal" value="LINK">
+                  </div>
+                  <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 check" *ngIf="item.status===1">
+                    <span class="glyphicon glyphicon-ok text-center "></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- Notifications section -->
+            <div class="whiteBg detailView topMargin" id="s6">
+              <span class="size18">Notifications</span>
+              <div id="signup-form">
+
+                <div class="row topMargin">
+                  <div class="col col-lg-10 col-md-10 col-sm-10 col-xs-9">
+                    <div>
+                      <span>Email notifications for new tasks</span>
+                    </div>
+                    <div>
+                      <label>Enabled</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="submit" id="submit-form" class="hidden" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-lg" id="myModal">
+  <div class="modal-dialog modal-lg modal-xs">
+    <div class="modal-content p20">
+
+      <div class="modal-body">
+        <label>Enter your {{selectedOptn}} link.</label>
+        <input type="url" [(ngModel)]="urlLink" class="width" />
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn  btn3 btn-lg btn-sm whiteClr" (click)="clear()" data-dismiss="modal">Cancel</button>
+
+        <button type="button" class="btn btn-lg btn-sm  whiteClr mLeft" (click)="saveLink(urlLink)" data-dismiss="modal">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>

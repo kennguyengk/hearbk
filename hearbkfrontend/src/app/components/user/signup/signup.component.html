@@ -1,0 +1,116 @@
+<div *ngIf="accountcreated === false"  class="signup">
+    <div class="gradient " style="height:869px">
+        <div  style="text-align:right;" >
+            <!-- <a  class="reference-link font22" routerLink="/hearbk">LandingPage</a> -->
+        </div>
+        <div class="signup-form col-md-offset-4 col-sm-8 col-sm-offset-2 col-md-4  col-lg-4 col-lg-offset-4">
+            <h2>Create your profile</h2>
+            <hr>
+            <div id="signup-form" class="col-md-10 col-sm-10 col-sm-offset-1 col-md-offset-1 col-lg-10 col-lg-offset-1">
+                <button type="button" (click)="socialSignIn('facebook')" class="btn btn-lg"><span *ngIf="!fbloader">Sign up with Facebook</span><span *ngIf="fbloader"><img src="assets/loader.gif" class="loader_img"/></span></button>
+                <p><span>Or, Sign up with email</span></p>
+                <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)">
+                    <input type="text" formControlName="first_name"  placeholder="First Name"/> 
+                   
+
+                    <input type="text" formControlName="last_name" placeholder="Last Name">
+                     <div *ngIf="signupForm.controls.last_name.invalid && (signupForm.controls.last_name.dirty || isSubmitted)" class="text-danger">
+                        <div *ngIf="signupForm.controls.last_name.errors.required">
+                            Name is required.
+                        </div>
+                    </div>
+                 
+
+
+
+                <span *ngIf="signupForm.controls.username.invalid && signupForm.controls.username.touched" style="color: red"> 
+                    Please enter a valid email here
+                </span>
+                <input type="text" formControlName="username" placeholder="Username / email" >
+                 <div *ngIf="signupForm.controls.username.invalid && (signupForm.controls.username.dirty || isSubmitted)" class="text-danger">
+                </div>               
+
+
+
+                <span *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched" style="color: red"> 
+                    Minimum length 8 characters
+                </span>
+                <input type="password" formControlName="password" title="minimum length 8 characters" placeholder="Password">
+
+
+                <span *ngIf="!passwrdMsg" style="color: red">
+                    Password doesnot match
+                </span>
+                <input type="password" formControlName="cpassword" placeholder="confirm Password" (keyup)="checkpass(signupForm.controls.password.value,signupForm.controls.cpassword.value)" placeholder="Confirm password">
+
+               <div class="center">
+                <div class="row">
+                   <div class="col-md-10 col-sm-10 col-lg-10">
+                    <file-drop customstyle="filedrop"  type="file" style="border: none!important;" (onFileDrop)="dropped($event)" 
+                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event) ">
+                        
+                        <div class="text-left leftMargin"> 
+                            <div class=" image-upload marginBottom" >
+                                <label  for="file-input" style="width:100%">
+                                    <div class="row" style="margin-top: 59px;">
+                                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2"><span class="glyphicon glyphicon-camera"></span></div> 
+                                    <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                                        <span *ngIf="imageName === ''" class="lineHeight marginLeft slct_drop_txt">Upload Photo or Drop Image</span> 
+                                        <p class="colormedium pStyle" ><span style="color: #32b3b0;text-align: left!important; position: absolute; top: 10px; left: 40px;">{{imageName}}</span></p>
+                                    </div> 
+                                    </div>
+                                </label>
+                                <input id="file-input" type="file" formControlName="image" (change)="onFileChanged($event)">
+                            </div>
+                        </div>
+                    </file-drop>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-lg-2"><span *ngIf="imageName === ''" (click)="removeimage()" class="glyphicon glyphicon-remove crossIcon del_icon" ></span></div>
+                    </div>
+                </div>
+
+
+            <span style="font-size: 12px;">By using our products and services, you
+                acknowledge that you've reviewed and agree
+                to our<a href="#"> Terms of Use,</a> <a href="#"> Acceptable Use Policy,</a>
+                and <a href="#">Privacy Policy,</a> <a href="#"> Refund Policy</a>.
+            </span>
+           <input  *ngIf="!captchastatus" type="submit"  class="btn btn-lg" value="Create" style="margin-top: 25px">
+           <input *ngIf="captchastatus"  type="submit" class="btn btn-lg" value="Create" style="margin-top: 25px">
+           <div>
+           <!--   <input  *ngIf="captchastatus ==='false'" type="submit" (click)="execute()" class="btn btn-lg" value="Create" style="margin-top: 25px">
+           <input *ngIf="captchastatus ==='true'"  type="submit" class="btn btn-lg" value="Create" style="margin-top: 25px">
+           <div> -->
+            <ngx-invisible-recaptcha #captchaElem
+                  [type]="type"
+                  [badge]="Inline"
+                  (load)="handleLoad()"
+                  (success)="handleSuccess($event)">
+            </ngx-invisible-recaptcha>
+           </div>
+
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+<div *ngIf="accountcreated === true" class="bgimage">
+  <div class="container">
+    <div class="content">
+      <div class="logo">
+        <img src="assets/Logo.png">
+        <h3>Thank you for Signing Up. We have sent the account activation link on your registered email id. Please check your inbox.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="accountcreated" class="bgimage">
+  <div class="container">
+    <div class="content">
+      <div class="logo">
+        <img src="assets/Logo.png">
+        <h3>Thank you {{fbname}} for Signing Up with Facebook.</h3>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="bgimage">
+  <div class="container">
+    <div class="content">
+      <div class="logo">
+        <img src="assets/Logowhite.png" style="height: 39px;">
+      </div>
+      <h3>What's better than listening to new music</h3>
+      <h1>Getting Paid for it.</h1>
+      <h4>
+        <i>Earn money by completing surveys for artist,</i>
+      </h4>
+      <h4>
+        <i>producers, songwriter and musicians</i>
+      </h4>
+    </div>
+    <div *ngIf="registerstatus ==='false'">
+      <form [formGroup]="earlyaccess" (ngSubmit)="register(earlyaccess.value)">
+        <div class="transparent-border col-md-offset-3 col-md-6 col-sm-7 col-sm-offset-2 input-group">
+          <input type="email" class="email form-control" name="email" placeholder="Email address" formControlName="email">
+          <span class="input-group-btn get-access">
+            <input type="submit" [disabled]="!earlyaccess.valid" title="Enter valid Email" class="email btn btn-info" value="GET EARLY ACCESS">
+          </span>
+          <span class="input-group-btn">
+            <input type="submit" [disabled]="!earlyaccess.valid" class="email btn btn-info" value="SEND">
+          </span>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="col-lg-6 col-lg-offset-3 row" style="margin-top: 10px;">
+    </div>
+
+    <div *ngIf="registerstatus ==='true'" class="col-md-offset-3 col-md-6 col-sm-7 col-sm-offset-2 input-group" style="text-align: center;padding: 20px;border-radius: 5px;">
+      <h4>Thank you for subscribing. We will get back to you soon!</h4>
+    </div>
+  </div>
+</div>
+<div class="panel-heading footer navbar-fixed-bottom text-center secP" style="background: white; color: black">
+  <div class="col-md-12">
+    <div class="col-md-5 col-sm-5" style="padding-top: 10px; color:gray">
+      <p>© 2018 HearBK Inc. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-3 col-sm-3 contact" style="padding-top: 10px;">
+      <b>
+        <p>Contact</p>
+      </b>
+    </div>
+    <div class="col-md-4 col-sm-4  col-xs-12">
+      <a class="fa fa-facebook"></a>
+      <a class="fa fa-instagram"></a>
+      <a class="fa fa-google"></a>
+      <a class="fa fa-linkedin"></a>
+      <a class="fa fa-soundcloud"></a>
+      <a class="fa fa-spotify"></a>
+    </div>
+  </div>
+</div>
